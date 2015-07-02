@@ -1,0 +1,892 @@
+
+ 
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>已分组线路-助游驿 -后台管理系统</title>
+		
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- basic styles -->
+		<link href="/manage/assets/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="/manage/assets/css/font-awesome.min.css" />
+		<!--[if IE 7]>
+		  <link rel="stylesheet" href="/manage/assets/css/font-awesome-ie7.min.css" />
+		<![endif]-->
+		<!-- page specific plugin styles -->
+		<!-- fonts 
+		<link rel="stylesheet" href="http://fonts.useso.com/css?family=Open+Sans:400,300" />
+		-->
+		<!-- ace styles -->
+		<link rel="stylesheet" href="/manage/assets/css/ace.min.css" />
+		<link rel="stylesheet" href="/manage/assets/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="/manage/assets/css/ace-skins.min.css" />
+		<!--[if lte IE 8]>
+		  <link rel="stylesheet" href="/manage/assets/css/ace-ie.min.css" />
+		<![endif]-->
+		<!-- inline styles related to this page -->
+		<!-- ace settings handler -->
+		<script src="/manage/assets/js/ace-extra.min.js"></script>
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		<script src="/manage/assets/js/html5shiv.js"></script>
+		<script src="/manage/assets/js/respond.min.js"></script>
+		<![endif]-->
+		<script src="/manage/assets/js/jquery-2.0.3.min.js"></script>
+	</head>
+
+	<body>
+		
+
+		
+<div class="navbar navbar-default" id="navbar">
+	<script type="text/javascript">
+		try{ace.settings.check('navbar' , 'fixed')}catch(e){}
+	</script>
+
+	<div class="navbar-container" id="navbar-container">
+		<div class="navbar-header pull-left">
+			<a href="/manage/jsp/index.jsp" class="navbar-brand">
+				<small>
+					<i class="icon-leaf"></i>
+					助游驿后台管理系统
+				</small>
+			</a><!-- /.brand -->
+		</div><!-- /.navbar-header -->
+
+		<div class="navbar-header pull-right" role="navigation">
+			<ul class="nav ace-nav">
+				<li class="grey">
+					<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+						<i class="icon-tasks"></i>
+						<span class="badge badge-grey"></span>
+					</a>
+
+					<ul class="pull-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+						<li class="dropdown-header">
+							<i class="icon-ok"></i>
+							一堆线路数据等待完善
+						</li>
+
+						<li>
+							<a href="/manage/jsp/tour_list/noDest.jsp">
+								查看未分组线路
+								<i class="icon-arrow-right"></i>
+							</a>
+						</li>
+					</ul>
+				</li>
+
+
+				<li class="light-blue">
+					<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+						<span class="user-info">
+							<small>BBB,您好</small>
+							欢迎光临
+						</span>
+
+						<i class="icon-caret-down"></i>
+					</a>
+
+					<ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+						
+ 						<li>
+							<a href="/manage/jsp/admin_user/pwdChange.jsp">
+								<i class="icon-off"></i>
+								修改密码
+							</a>
+						</li>
+						<li>
+							<a href="/manage/index.jsp?logout=true">
+								<i class="icon-off"></i>
+								退出
+							</a>
+						</li>
+					</ul>
+				</li>
+			</ul><!-- /.ace-nav -->
+		</div><!-- /.navbar-header -->
+		
+	</div><!-- /.container -->
+</div>
+
+		<div class="main-container" id="main-container">
+			<script type="text/javascript">
+				try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+			</script>
+
+			<div class="main-container-inner">
+				
+
+ 
+
+
+	
+
+
+
+<a class="menu-toggler" id="menu-toggler" href="#">
+	<span class="menu-text"></span>
+</a>
+<div class="sidebar" id="sidebar">
+	
+	<script type="text/javascript">
+		try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+	</script>
+
+	<ul class="nav nav-list">
+		<li class="active">
+			<a href="/manage/jsp/index.jsp">
+				<i class="icon-dashboard"></i>
+				<span class="menu-text"> 控制台首页 </span>
+			</a>
+		</li>
+
+		<li class="active open">
+			<a href="#" class="dropdown-toggle">
+				<i class="icon-list"></i>
+				<span class="menu-text"> 线路库 </span>
+
+				<b class="arrow icon-angle-down"></b>
+			</a>
+			<ul class="submenu">
+				<li>
+					<a href="/manage/jsp/tour_list/noDest.jsp">
+						<i class="icon-double-angle-right"></i>
+						未分组 &amp; 新导入
+					</a>
+				</li>
+				<li>
+					<a href="/manage/jsp/tour_list/locked.jsp">
+						<i class="icon-double-angle-right"></i>
+						锁定的线路
+					</a>
+				</li>
+				<li>
+					<a href="/manage/jsp/tour_list/dest.jsp">
+						<i class="icon-double-angle-right"></i>
+						已分组
+					</a>
+				</li>
+				<li>
+					<a href="/manage/jsp/edit.jsp?add=true">
+						<i class="icon-edit"></i>
+						<span class="menu-text"> 增加线路 </span>
+					</a>
+				</li>
+			</ul>
+		</li>
+		
+			<li>
+				<a href="#" class="dropdown-toggle">
+					<i class="icon-list"></i>
+					<span class="menu-text"> 网站设置</span>
+					<b class="arrow icon-angle-down"></b>
+				</a>
+				<ul class="submenu">
+					<li>
+						<a href="/manage/jsp/site/shopHomePic.jsp">
+							<i class="icon-double-angle-right"></i>子站首页轮播图
+						</a>
+					</li>
+				</ul>
+			</li>
+		
+		
+		
+		
+		
+		<li class="active open">
+			<a href="#" class="dropdown-toggle">
+				<i class="icon-list"></i>
+				<span class="menu-text"> 子站管理</span>
+				<b class="arrow icon-angle-down"></b>
+			</a>
+			<ul class="submenu">
+				<li>
+					<a href="/manage/jsp/site/list.jsp">
+						<i class="icon-double-angle-right"></i>子站列表
+					</a>
+				</li>
+				<li>
+					<a href="/manage/jsp/site/add.jsp">
+						<i class="icon-double-angle-right"></i>新增子站
+					</a>
+				</li>
+				<li>
+					<a href="/manage/jsp/site/applyList.jsp">
+						<i class="icon-double-angle-right"></i>入驻申请
+					</a>
+				</li>
+			</ul>
+		</li>
+		
+		<li class="active open">
+			<a href="#" class="dropdown-toggle">
+				<i class="icon-beer"></i>
+				<span class="menu-text"> 供应商</span>
+				<b class="arrow icon-angle-down"></b>
+			</a>
+			<ul class="submenu">
+				<li>
+					<a href="/manage/jsp/supplier/list.jsp">
+						<i class="icon-double-angle-right"></i>供应商列表
+					</a>
+				</li>
+				<li>
+					<a href="/manage/jsp/supplier/edit.jsp">
+						<i class="icon-double-angle-right"></i>新增供应商
+					</a>
+				</li>
+			</ul>
+		</li>
+		
+		 
+		 
+		 
+		
+		<li>
+			<a href="#" class="dropdown-toggle">
+				<i class="icon-list"></i>
+				<span class="menu-text">后台用户管理</span>
+				<b class="arrow icon-angle-down"></b>
+			</a>
+			<ul class="submenu">
+				<li>
+					<a href="/manage/jsp/admin_user/list.jsp">
+						<i class="icon-double-angle-right"></i>
+						后台用户列表
+					</a>
+				</li>
+				<li>
+					<a href="/manage/jsp/admin_user/edit.jsp">
+						<i class="icon-double-angle-right"></i>
+						新增用户
+					</a>
+				</li>
+			</ul>
+		</li>
+        
+
+
+
+	</ul><!-- /.nav-list -->
+
+	<div class="sidebar-collapse" id="sidebar-collapse">
+		<i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+	</div>
+
+	<script type="text/javascript">
+		try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+	</script>
+</div>
+				
+				
+				
+				<!-- main-content begin-->
+				<div class="main-content">
+					<div class="breadcrumbs" id="breadcrumbs">
+						<script type="text/javascript">
+							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+						</script>
+
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home home-icon"></i>
+								<a href="/manage/jsp/index.jsp">首页</a>
+							</li>
+							<li class="active">已分组线路</li>
+						</ul><!-- .breadcrumb -->
+
+						<div class="nav-search" id="nav-search">
+							<form class="form-search" method="post" action="/manage/jsp/tour_list/search.jsp" onsubmit="return (document.getElementById('keyword').value.length>0);">
+								<span class="input-icon">
+									<input type="text" placeholder="Search ..." class="nav-search-input" name="keyword" id="keyword" autocomplete="off" />
+									<i class="icon-search nav-search-icon"></i>
+								</span>
+							</form>
+						</div><!-- #nav-search -->
+					</div>
+
+					<div class="page-content">
+						
+						<div class="row">
+							<div class="col-xs-12">
+									
+<!-- PAGE CONTENT BEGINS -->
+<div class="page-header">
+		<!-- 快速检索begin  -->
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+						<i class="icon-angle-down bigger-110" data-icon-hide="icon-angle-down" data-icon-show="icon-angle-right"></i>
+						&nbsp;快速查找
+					</a>
+				</h4>
+			</div>
+			<div class="panel-collapse collapse in" id="collapseOne">
+				<div class="panel-body">
+					
+<div id="allDestsDiv">
+	<table class="destTable table-bordered" width="370" style="float:left;">
+		<tr>
+			<td rowspan="4"><a i="1" e="abroad">出境</a></td>
+			<td><a i="2" e="asia">亚洲游</a>（<a i="3" e="thailand" do="1">泰新马</a>、<a i="3" e="japanKorea" do="1">日本韩国</a>、<a i="3" e="northKorea" do="1">朝鲜</a>、<a i="3" e="vietnam" do="1">越南柬埔寨</a>、<a i="3" e="nepal" do="1">南亚尼泊尔</a>）
+			</td>
+		</tr>
+		<tr>
+			<td><a i="2" e="europe">欧洲游</a>（<a i="3" e="france" do="1">法意瑞</a>、<a i="3" e="britain" do="1">英国</a>、<a i="3" e="russia" do="1">俄罗斯</a>、<a i="3" e="multinational" do="1">欧洲多国组合</a>、<a i="3" e="turkey" do="1">土耳其</a>）
+			</td>
+		</tr>
+		<tr>
+			<td><a i="2" e="africa">中东非洲</a>（<a i="3" e="southAfrica" do="1">南非</a>、<a i="3" e="egypt" do="1">埃及</a>、<a i="3" e="dubai" do="1">迪拜</a>）
+			</td>
+		</tr>
+		<tr>
+			<td><a i="2" e="australia" do="1">澳洲新西兰</a>  <a i="2" e="us" do="1">美国加拿大   <a i="2" e="liner" do="1">邮轮  <a i="2" e="island" do="1">海岛</td>
+		</tr>
+	</table>
+	<table class="destTable table-bordered" width="440" style="float:left;margin-left:3px;">
+		<tr>
+			<td rowspan="5"><a i="1" e="domestic">国内</a></td>
+			<td><a i="2" e="southwest">西南游</a>（<a i="3" e="sichuan" do="1">四川</a>、<a i="3" e="xizang" do="1">西藏 </a>、<a i="3" e="guizhou" do="1">贵州 </a>、<a i="3" e="yunnan" do="1">云南</a> ）
+			</td>
+		</tr>
+		<tr>
+			<td><a i="2" e="southCenter">中南游</a>（<a i="3" e="hainan" do="1">海南广深珠</a>、<a i="3" e="guibeihai" do="1">桂林北海</a>、<a i="3" e="zhangjiajie" do="1">湖南张家界</a>、<a i="3" e="sanxia" do="1">重庆长江三峡湖北</a>）
+			</td>
+		</tr>
+		<tr>
+			<td><a i="2" e="east">华东游</a>（<a i="3" e="huadong" do="1">华东</a>、<a i="3" e="wuyishan" do="1">厦门武夷山</a>、<a i="3" e="huangshan" do="1">安徽黄山</a>、<a i="3" e="lushan" do="1">江西庐山</a>）
+			</td>
+		</tr>
+		<tr>
+			<td><a i="2" e="north">华北游</a>（<a i="3" e="beijing" do="1">京津冀</a>、<a i="3" e="dalian" do="1">山东大连</a>、<a i="3" e="neimeng" do="1">山西内蒙古</a>）
+			</td>
+		</tr>
+		<tr>
+			<td><a i="2" e="northwest" do="1">西北游</a> <a i="2" e="northeast" do="1">东北游</a></td>
+		</tr>
+	</table>
+	<table class="destTable table-bordered" width="200" style="float:left;margin-left:3px;">
+		<tr>
+			<td><a i="1" e="gangaotai">港澳台</a></td>
+			<td><a i="2" e="gangao" do="1">香港澳门</a>、<a i="2" e="taiwan" do="1">台湾</a></td>
+		</tr>
+		<tr>
+			<td><a i="1" e="around">周边游</a></td>
+			<td><a i="2" e="days1" do="1">一日游</a> <a i="2" e="days2" do="1">二日游</a> <a i="2" e="days3" do="1">多日游</a></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				&nbsp;<a i="1" e="pkg" do="1">自由行</a>
+				&nbsp;<a i="1" e="zijiayou" do="1">自驾游</a>
+				&nbsp;<a i="1" e="xiyanghong" do="1">夕阳红专列</a>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">&nbsp;<a i="1" e="xian" do="1">目的地(如西安游/延安游)</a></td>
+		</tr>
+	</table>
+</div>
+<script type="text/javascript">
+	$(function(){
+		$(".destTable a").each(function(){
+			//console.log($(this).attr("i")+"&en="+$(this).attr("e"));
+			$(this).attr("href","/manage/jsp/tour_list/dest.jsp?level="+$(this).attr("i")+"&e="+$(this).attr("e"));
+		});
+	});
+</script>
+				
+				
+				</div>
+			</div>
+		</div>
+		
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+						<i class="icon-angle-down bigger-110" data-icon-hide="icon-angle-down" data-icon-show="icon-angle-right"></i>
+						&nbsp;用供应商查询
+					</a>
+				</h4>
+			</div>
+			<div class="panel-collapse collapse in" id="collapseTwo">
+				<div class="panel-body">
+					<form action="/manage/jsp/tour_list/multi_Search.jsp" method="post">
+						<select class="form-control chosen-select width-20" name="supplier_search" id="supplier_search">
+							<option value="-1">-选择供应商-</option>
+							
+					      		<option value="Juyoutianxia">云南 聚游天下_张娟</option>
+					      	
+					      		<option value="18191960063">365邮轮假期 付艳</option>
+					      	
+					      		<option value="13978398126">Club Med 桂林唐朝国际旅行社 周晓光</option>
+					      	
+					      		<option value="18792733335">台湾 赵旭</option>
+					      	
+					      		<option value="13992859726">云南 山伯假期 梁博</option>
+					      	
+					      		<option value="13289205005">日本  海外旅行 陈沫</option>
+					      	
+					      		<option value="18066755589">云南 悦之旅 刘欢</option>
+					      	
+					      		<option value="13991318112">西安  biangbiang假期  杨向东</option>
+					      	
+					      		<option value="17792261989">海南 海口民间 张忠</option>
+					      	
+					      		<option value="13909266376">海岛  海岛假期  单霞</option>
+					      	
+					      		<option value="13720558459">周边游 鑫旅行 张婉璐</option>
+					      	
+					      		<option value="13709210100">西安  走进长安  马江</option>
+					      	
+					      		<option value="18091822139">华东 德高 吴煤华</option>
+					      	
+					      		<option value="18192600019">海南银河假日_张俊</option>
+					      	
+					      		<option value="15991706595">俄罗斯_美辰环球行_王磊</option>
+					      	
+					      		<option value="18602902488">周边游_长安假期_罗勍</option>
+					      	
+					      		<option value="13152181581">港澳 大澳假期 魏育</option>
+					      	
+					      		<option value="15029578941">云南 顺心云南 任资谕</option>
+					      	
+					      		<option value="13088981706">西安 陕西长城 高丽娟</option>
+					      	
+					      		<option value="18700993198">江西 兰山国旅 尹晓武</option>
+					      	
+					      		<option value="18629572286">自驾 西安青旅 张朝滨</option>
+					      	
+					      		<option value="18629504032">贵州 惠众旅业 席璘</option>
+					      	
+					      		<option value="18792551170">湖南 纳百利 王海发</option>
+					      	
+					      		<option value="13571980307">九寨 西南假期 宋云正</option>
+					      	
+					      		<option value="13572976838">华东 域道假期 朱武军</option>
+					      	
+					      		<option value="13359257777">三峡、重庆、恩施周雪</option>
+					      	
+					      		<option value="13060389715">新疆 侯周民</option>
+					      	
+					      		<option value="13772458656">台湾 过瘾去台湾 马麟越</option>
+					      	
+					      		<option value="13991889962">韩国 陈娟 </option>
+					      	
+					      		<option value="13892899238">自驾游 途驴 王晓明</option>
+					      	
+					      		<option value="13892898668">四川、西藏、九寨林杰</option>
+					      	
+					      		<option value="18991914268">台湾 省海外 吴波</option>
+					      	
+					      		<option value="17709206759">日照、李贺</option>
+					      	
+					      		<option value="13359291054">西宁、甘南贾莉</option>
+					      	
+					      		<option value="15353717180">银川、陈桢</option>
+					      	
+					      		<option value="13324541150">山东、王欢</option>
+					      	
+					      		<option value="17709206459">内蒙、东北 潘高鑫</option>
+					      	
+					      		<option value="17709210269">西安地接 吴煤华</option>
+					      	
+					      		<option value="18089186766">日韩海岛 省海外 王蕊</option>
+					      	
+					      		<option value="15102967054">斯里兰卡  省海外 邵柳叶</option>
+					      	
+					      		<option value="13609125340">出境 龙腾天下 谢沛</option>
+					      	
+					      		<option value="13324572166">广西 韦小宝</option>
+					      	
+					      		<option value="18700444466">刘震 产品 电子商务部</option>
+					      	
+					      		<option value="18629411910">海南、桂林小改</option>
+					      	
+					      		<option value="13991983266">邮轮 海洋之旅 杨宸</option>
+					      	
+					      		<option value="18991859626">走进西藏 胡波</option>
+					      	
+					      		<option value="18600407676">欧洲批发 刘宝建</option>
+					      	
+					      		<option value="13572824545">港澳台 王鹏</option>
+					      	
+					      		<option value="18629152860">海岛 刘清菊</option>
+					      	
+					      		<option value="15339182367">周边游 王良</option>
+					      	
+					      		<option value="13002977707">周边 西安盛唐文化 孙明科</option>
+					      	
+					      		<option value="18629157633">东南亚 省海外 田苗</option>
+					      	
+					      		<option value="13659240506">欧美澳非 省海外 陈颖</option>
+					      	
+					      		<option value="18066623600">港澳 省海外 韩静</option>
+					      	
+					      		<option value="13892887341">周边游 西安鲲鹏 王伟</option>
+					      	
+					      		<option value="13772005758">出境亚洲  竹园  王伟</option>
+					      	
+					      		<option value="18991840177">国内  西安中旅  张俭</option>
+					      	
+					      		<option value="13636717041">周边  快乐假日  张双印</option>
+					      	
+					      		<option value="s_0">广西 象鼻山假日 张妍</option>
+					      	
+					      		<option value="s_1">云南 品尚云南 杨波</option>
+					      	
+					      		<option value="s_2">福建 精彩闽赣 刘勇</option>
+					      	
+					      		<option value="s_3">山东 畅游山东 刘勇</option>
+					      	
+					      		<option value="s_4">四川 魅力四川 何瑜</option>
+					      	
+					      		<option value="s_5">九寨 梦幻九寨 杨波</option>
+					      	
+					      		<option value="s_6">走进重庆 胡波</option>
+					      	
+					      		<option value="s_7">备用备用备用</option>
+					      	
+					      		<option value="s_8">西藏 走进西藏 胡波</option>
+					      	
+					      		<option value="s_9">呼伦贝尔 走进西藏 胡波</option>
+					      	
+					      		<option value="s_10">甘肃 走进甘肃 胡波</option>
+					      	
+					      		<option value="s_11">新疆 四川 福建 何瑜</option>
+					      	
+					      		<option value="s_12">汽车游 朱延伟</option>
+					      	
+					      		<option value="s_13">山东 滨海假期 霍志敏</option>
+					      	
+					      		<option value="s_14">海南  新视线 莫海</option>
+					      	
+					      		<option value="s_15">海南 椰晖   董长宝</option>
+					      	
+					      		<option value="s_16">桂林 新视线 莫海</option>
+					      	
+					      		<option value="s_17">云南 南亚 金燕</option>
+					      	
+					      		<option value="s_18">云南 翔云假期   张猛</option>
+					      	
+					      		<option value="s_19">云南 椰晖  董长宝</option>
+					      	
+					      		<option value="s_20">华东 友邦假期   姜帆 </option>
+					      	
+					      		<option value="s_21">华东 佰祥假期  樊利军</option>
+					      	
+					      		<option value="s_22">黄山 黄山宇佳 柳满洲</option>
+					      	
+					      		<option value="s_23">北京 青年商务 刘涛涛</option>
+					      	
+					      		<option value="s_24">北京 友邦假期  姜帆</option>
+					      	
+					      		<option value="s_25">福建 享游福建  李庭华</option>
+					      	
+					      		<option value="s_26">福建 凯超假期   袁兰</option>
+					      	
+					      		<option value="s_27">福建 椰晖  董长宝</option>
+					      	
+					      		<option value="s_28">湖南 森林假期易程  杨辉明</option>
+					      	
+					      		<option value="s_29">湖南 众仁旅业 李术彪</option>
+					      	
+					      		<option value="s_30">山东 半岛风情  陈延鹏</option>
+					      	
+					      		<option value="s_31">山东 青岛裕华</option>
+					      	
+					      		<option value="s_32">四川 川悦假期  靳亦耕</option>
+					      	
+					      		<option value="s_33">九寨 施剑峰</option>
+					      	
+					      		<option value="s_34">重庆 温丹假期  温丹</option>
+					      	
+					      		<option value="s_35">贵州  黄果树假期  罗欧</option>
+					      	
+					      		<option value="s_36">贵州 翔云假期  张猛</option>
+					      	
+					      		<option value="s_37">江西 西西之旅  西安四季风国际旅行社 徐东月</option>
+					      	
+					      		<option value="s_38">甘南 九寨 敦煌 青海 新疆 阿凡提假期   杨臣</option>
+					      	
+					      		<option value="s_39">青海 宁夏 山水风情  石全胜</option>
+					      	
+					      		<option value="s_40">青海 甘南  佰祥假期西宁 樊利军</option>
+					      	
+					      		<option value="s_41">新疆 丝路风情  吴娜</option>
+					      	
+					      		<option value="s_42">广西 椰晖 董长宝</option>
+					      	
+					      		<option value="s_43">一日游 中超 陕西中超国际旅行社 马铭瑶</option>
+					      	
+					      		<option value="s_44">一日游 新联邦  刘峰</option>
+					      	
+					      		<option value="s_45">专列 盛隆假期  孙嘉豪</option>
+					      	
+					      		<option value="s_46">专列 夕阳红   王强</option>
+					      	
+					      		<option value="s_47">湖北 湖北假期  翟冲</option>
+					      	
+					      		<option value="s_48">门票 新浪潮  张伦</option>
+					      	
+					      		<option value="s_49">台湾 西安中旅国际旅行社</option>
+					      	
+					      		<option value="s_50">敖包相会 西安四季风国际旅行社 徐东月</option>
+					      	
+					      		<option value="s_51">备用2备用2备用2</option>
+					      	
+					      		<option value="s_52">东北 东北大玩家  李莉</option>
+					      	
+					      		<option value="s_53">港澳 美辰环球行 叶崇飞</option>
+					      	
+					      		<option value="s_54">东南亚 美辰环球行 冯高悬</option>
+					      	
+					      		<option value="s_55">海岛 美辰环球行 李琦</option>
+					      	
+					      		<option value="s_56">日韩朝 美辰环球行 曹志强</option>
+					      	
+					      		<option value="s_57">欧澳 美辰环球行 杨波</option>
+					      	
+					      		<option value="s_58">美非 美辰环球行 张萍萍</option>
+					      	
+					      		<option value="s_59">签证 美辰环球行 苗瑞</option>
+					      	
+					      		<option value="s_60">出境 环球风情 张军</option>
+					      	
+					      		<option value="s_61">海岛 炫风情 崔晓莉</option>
+					      	
+					      		<option value="s_62">出境 逸游假期 翟鹏</option>
+					      	
+					      		<option value="s_63">延安  新华</option>
+					      	
+					      		<option value="s_64">延安  黄土地</option>
+					      	
+						</select>
+						<button class="btn btn-xs btn-info">搜索</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	<!-- 快速检索end -->
+	<h1>方向分组:</h1>
+</div>
+
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="table-responsive">
+		 	
+ 
+
+
+		 						
+		</div><!-- /.table-responsive -->
+	</div><!-- /span -->
+</div><!-- /row -->
+
+
+
+
+
+
+
+
+	
+     
+		
+
+
+
+<script type="text/javascript">
+<!--
+	function changeLock(tid,obj){
+		console.log($(obj).prop("checked"));
+		$.ajax({
+	        type:"POST",
+	        url:"/aj?t=locked&tid="+tid,
+	        data:"locked="+$(obj).prop("checked"),
+	        success:function(msg){
+	        }
+	    });
+	}
+//-->
+</script>
+<script type="text/javascript">
+	function copyTour(tid,obj){
+		bootbox.confirm("您确定要复制本条数据吗?", function(result) {
+			if(result) {
+				$(obj).hide();
+				$(obj).after("<span class='btn btn-xs btn-danger copydoing'>处理中..</span>");
+				var parentTr=$(obj).parents("tr");
+				$.ajax({
+			        type:"GET",
+			        url:"/aj?t=copyTour&tid="+tid+"&rt="+Math.random(),
+			        success:function(msg){
+			            var newId=msg.id;//新的ID
+			    		var newName=msg.name;
+			    		var newNamehref="<a href='/shop/tour.jsp?s=demo&id="+newId+"' target='_blank'>"+newName+"</a>";//新的名字
+			    		parentTr.after("<tr><td>"+newNamehref+"</td><td colspan='7' style='color:red;'>新拷贝的线路，为了区别原有线路，在名字前加了（拷贝），其他信息完全一致，请务必及时修改</td><td><button class='btn btn-xs btn-info' onclick=\"window.location.href='/manage/jsp/edit.jsp?tid="+newId+"'\"><i class='icon-edit bigger-120'></i>修改</button></td></tr>");
+			        },
+			        complete:function(){
+						$("span.copydoing").remove();
+						$(obj).show();
+				    }
+			    });
+			}
+		});
+	}
+	function deleteTour(tid,obj){
+		var parentTr=$(obj).parents("tr");
+		bootbox.confirm("删除不可回复，您确定要删除本条数据吗?", function(result) {
+			if(result) {
+				$.ajax({
+			        type:"GET",
+			        url:"/aj?t=deleteTour&tid="+tid+"&rt="+Math.random(),
+			        success:function(msg){
+						bootbox.dialog({
+							message: "<span class='bigger-110'>操作成功！(本窗口两秒自动消失)</span>",
+							buttons:{
+								"danger" :{
+									"label" : "知道了",
+									"className" : "btn-sm btn-danger"
+								}
+							}
+						});
+						setTimeout(function() {
+						    bootbox.hideAll();
+						    parentTr.hide(200).remove();
+						}, 3000);
+			        }
+			    });
+			}
+		});
+	}
+</script>
+
+<link rel="stylesheet" href="/manage/assets/chosen/chosen.min.css"/>
+<script src="/manage/assets/chosen/chosen.jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$(".chosen-select").chosen({
+			allow_single_deselect:true,
+			no_results_text:'没有匹配的数据:',
+			enable_split_word_search:true
+		});
+		$("a.accordion-toggle[href='#collapseTwo']").click();
+	});
+</script>
+
+<script src="/manage/assets/js/bootbox.min.js"></script>
+<script src="/js/yulan.js?v=20150420"></script>
+
+
+
+<!-- PAGE CONTENT ENDS -->
+
+	
+</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div><!-- /.main-content -->
+				<!-- main-content end-->
+				
+				
+				
+				
+				<div class="ace-settings-container" id="ace-settings-container">
+					<div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
+						<i class="icon-cog bigger-150"></i>
+					</div>
+
+					<div class="ace-settings-box" id="ace-settings-box">
+						<div>
+							<div class="pull-left">
+								<select id="skin-colorpicker" class="hide">
+									<option data-skin="default" value="#438EB9">#438EB9</option>
+									<option data-skin="skin-1" value="#222A2D">#222A2D</option>
+									<option data-skin="skin-2" value="#C6487E">#C6487E</option>
+									<option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
+								</select>
+							</div>
+							<span>&nbsp; 选择皮肤</span>
+						</div>
+
+						<div>
+							<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-navbar" />
+							<label class="lbl" for="ace-settings-navbar"> 固定导航条</label>
+						</div>
+
+						<div>
+							<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-sidebar" />
+							<label class="lbl" for="ace-settings-sidebar"> 固定滑动条</label>
+						</div>
+
+						<div>
+							<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-breadcrumbs" />
+							<label class="lbl" for="ace-settings-breadcrumbs">固定面包屑</label>
+						</div>
+
+						<div>
+							<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" />
+							<label class="lbl" for="ace-settings-rtl">切换到左边</label>
+						</div>
+
+						<div>
+							<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-add-container" />
+							<label class="lbl" for="ace-settings-add-container">
+								切换窄屏
+								<b></b>
+							</label>
+						</div>
+					</div>
+				</div><!-- /#ace-settings-container -->
+			
+
+</body>
+</html>
+				
+			</div><!-- /.main-container-inner -->
+
+			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+				<i class="icon-double-angle-up icon-only bigger-110"></i>
+			</a>
+		</div><!-- /.main-container -->
+
+		
+<!-- basic scripts -->
+		
+		<script type="text/javascript">
+			if("ontouchend" in document) document.write("<script src='/manage/assets/js/jquery.mobile.custom.min.js'>"+"<"+"script>");
+		</script>
+		<script src="/manage/assets/js/bootstrap.min.js"></script>
+		<script src="/manage/assets/js/typeahead-bs2.min.js"></script>
+		<!-- page specific plugin scripts -->
+		<!--[if lte IE 8]>
+		  <script src="/manage/assets/js/excanvas.min.js"></script>
+		<![endif]-->
+		<script src="/manage/assets/js/jquery-ui-1.10.3.custom.min.js"></script>
+		<script src="/manage/assets/js/jquery.ui.touch-punch.min.js"></script>
+		<script src="/manage/assets/js/jquery.slimscroll.min.js"></script>
+		<script src="/manage/assets/js/jquery.easy-pie-chart.min.js"></script>
+		<script src="/manage/assets/js/jquery.sparkline.min.js"></script>
+		<script src="/manage/assets/js/flot/jquery.flot.min.js"></script>
+		<script src="/manage/assets/js/flot/jquery.flot.pie.min.js"></script>
+		<script src="/manage/assets/js/flot/jquery.flot.resize.min.js"></script>
+		<!-- ace scripts -->
+		<script src="/manage/assets/js/ace-elements.min.js"></script>
+		<script src="/manage/assets/js/ace.min.js"></script>
+
+</body>
+</html>						

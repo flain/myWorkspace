@@ -1,0 +1,6 @@
+# Netscape HTTP Cookie File
+# http://curl.haxx.se/rfc/cookie_spec.html
+# This is a generated file!  Do not edit.
+
+www.16trip.com	FALSE	/	FALSE		JSESSIONID	49901E5E1810EED30C430EFA69FB0C93
+www.16trip.com	FALSE	/	FALSE	1435841529	f_a_id	5403e9638f5647123f3e893f
