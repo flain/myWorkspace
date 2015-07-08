@@ -41,17 +41,45 @@ print 'soup.a.string=', soup.a.string, type(soup.a.string)
 print '-------------------------------------------------'
 
 print soup.head.contents
-print len(soup.body.contents)
-print soup.body.contents
+print soup.head.string
+# print len(soup.body.contents)
+# print soup.body.contents
 
-print soup.body.children
-print "body 's children:"
-i = 0
-for tag in soup.body.children:
-    print i, tag
-    i = i+1
+# print soup.body.children
+# print "body 's children:"
+# i = 0
+# for tag in soup.body.children:
+#     print i, tag.name
+#     i = i+1
+#
+# i = 0
+# for child in soup.descendants:
+#     print i, child
+#     i = i+1
+# i = 0
+# for str in soup.stripped_strings:
+#     print i, str
+#     i = i+1
+print '-------------------------------------------------'
+print 'soup.p = ',soup.p
+print soup.p.b
+print soup.p.b.parent
+print soup.p.b.parents
+for parent in soup.p.b.parents:
+    print parent.name
+print '-------------------------------------------------'
+print soup.a
+print soup.a.next_sibling
+print soup.a.next_element
+print soup.a.previous_sibling
+print soup.a.previous_element
+print '-------------------------------------------------'
+def has_class_but_no_id(tag):
+    return tag.has_attr('class') and not tag.has_attr('id')
+def has_class_sister(tag):
+    return tag.has_attr('class') and ('sister' in tag.attrs['class'])
+ass = soup.find_all(name=has_class_sister)
+print ass
+print len(ass)
 
-i = 0
-for child in soup.descendants:
-    print i, child
-    i = i+1
+print soup.find_all(id="link2")

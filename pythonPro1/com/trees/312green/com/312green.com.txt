@@ -1,0 +1,6 @@
+# Netscape HTTP Cookie File
+# http://curl.haxx.se/rfc/cookie_spec.html
+# This is a generated file!  Do not edit.
+
+www.312green.com	FALSE	/	FALSE		PHPSESSID	i7meul18tispp68laqirsab820
+www.312green.com	FALSE	/office	FALSE	1439925288	user_loginname	flain1
